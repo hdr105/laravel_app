@@ -32,10 +32,4 @@ Route::get('/in_progress/{id}', InProgress::class)->middleware(['auth']);
 // Route::get('/storyblock', Storyblock::class)->middleware(['auth']);
 Route::get('/storyblok/{slug?}', Storyblock::class);
 
-// Route::get('/form', function () {
-//     dd()
-// });
-// Route::get('/storyblok/{slug?}', function ($slug = 'home') {
-//     dd($slug);
 
-//  });
