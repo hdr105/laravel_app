@@ -5,6 +5,7 @@ use App\Http\Livewire\Tasks;
 use App\Http\Livewire\Storyblock;
 use App\Http\Livewire\InProgress;
 use App\Http\Livewire\TaskList;
+use App\Http\Livewire\Users;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,13 +18,14 @@ use App\Http\Livewire\TaskList;
 */
 
 Route::get('/', function () {
-    return redirect('/task');
+    return redirect('/dashboard');
 })->middleware(['auth','role']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return redirect('/task');
+    return view('dashboard');
 })->name('dashboard');
 
+Route::get('/users', Users::class)->name('users')->middleware(['auth','role']);
 Route::get('/task', Tasks::class)->middleware(['auth','role']);
 Route::get('/task-list', TaskList::class)->middleware(['auth']);
 Route::get('/in_progress/{id}', InProgress::class)->middleware(['auth']);
