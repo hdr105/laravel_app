@@ -35,5 +35,5 @@ Route::get('/storyblok/{slug?}', Storyblock::class);
 // });
 // Route::get('/storyblok/{slug?}', function ($slug = 'home') {
 //     dd($slug);
-    
+
 //  });

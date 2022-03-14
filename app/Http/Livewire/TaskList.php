@@ -12,7 +12,15 @@ class TaskList extends Component
     public $tasks, $mytasks, $in_progress_tasks;
     public function render()
     {
-        $this->tasks = Task::all();
+
+        $inprogress = Task::where('user_id',Auth::user()->id)->where('status',1)->get();
+        if(count($inprogress)){
+            $this->tasks = Task::where('user_id',Auth::user()->id)->where('status',1)->get();
+
+        }else{
+
+            $this->tasks = Task::where('status',0)->whereNull('user_id')->get();
+        }
         $this->mytasks = Task::where('user_id',Auth::user()->id)->get();
         return view('livewire.task-list');
     }
