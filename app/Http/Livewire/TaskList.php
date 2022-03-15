@@ -26,7 +26,7 @@ class TaskList extends Component
 
     public function starttask($id){
         Task::where('id',$id)->update([
-            'status' => 1,
+            'status' => '1',
             'user_id' => Auth::user()->id
         ]);
     }

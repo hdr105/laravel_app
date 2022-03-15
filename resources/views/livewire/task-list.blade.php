@@ -18,7 +18,7 @@
                 <tbody>
                     @foreach($tasks as $task)
                     @if( $task->status === '0')
-                        <tr class="cursor-pointer" >
+                        <tr class="" >
                             <td class="border px-4 py-2">{{ $task->title }}</td>
                             <td class="border px-4 py-2">{{ $task->no_of_images }}</td>
                             <td class="border px-4 py-2">{{ $task->detail }}</td>
