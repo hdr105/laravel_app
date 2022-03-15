@@ -20,12 +20,12 @@ class Users extends Component
     protected $rules = [
         'name' => 'required',
         'email' => 'required|email',
-        
+
     ];
 
     public function render()
     {
-        $this->users = User::all();
+        $this->users = User::where('role' ,'!=', 'admin')->get();
         return view('livewire.users');
     }
 
@@ -38,21 +38,21 @@ class Users extends Component
     public function store()
     {
         $this->validate();
-   
+
         User::updateOrCreate(['id' => $this->user_id], [
             'name' => $this->name,
             'email' => $this->email,
             'role' => 'staff',
             'password' => Hash::make($this->password)
         ]);
-  
-        session()->flash('message', 
+
+        session()->flash('message',
             $this->user_id? 'User Updated Successfully.' : 'User Created Successfully.');
-  
+
         $this->closeModal();
         $this->resetInputFields();
     }
-  
+
     /**
      * The attributes that are mass assignable.
      *
@@ -62,7 +62,7 @@ class Users extends Component
     {
         $this->isOpen = true;
     }
-  
+
     /**
      * The attributes that are mass assignable.
      *
@@ -72,7 +72,7 @@ class Users extends Component
     {
         $this->isOpen = false;
     }
-  
+
     /**
      * The attributes that are mass assignable.
      *
@@ -84,7 +84,7 @@ class Users extends Component
         $this->role = '';
         $this->user_id = '';
         $this->password = '';
-        
+
     }
 
     public function edit($id)
@@ -97,7 +97,7 @@ class Users extends Component
         // $this->password = $this->user->role;
         $this->isOpen = true;
         // $this->create();
-        
+
 
     }
     public function delete($id)

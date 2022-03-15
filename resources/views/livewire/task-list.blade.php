@@ -18,19 +18,19 @@
                 <tbody>
                     @foreach($tasks as $task)
                     @if( $task->status === 0)
-                        <tr class="cursor-pointer" wire:click="starttask({{ $task->id }})">
+                        <tr class="cursor-pointer" >
                             <td class="border px-4 py-2">{{ $task->title }}</td>
                             <td class="border px-4 py-2">{{ $task->no_of_images }}</td>
                             <td class="border px-4 py-2">{{ $task->detail }}</td>
                             <td class="border px-4 py-2">
-                                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Start Task</button>
+                                <button wire:click="starttask({{ $task->id }})" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Start Task</button>
                             </td>
                         </tr>
                     @elseif( $task->status ===  1)
-                        <tr class="cursor-pointer" wire:click="in_progress({{ $task->id }})">
-                            <td class="border px-4 py-2">{{ $task->title }}</td>
-                            <td class="border px-4 py-2">{{ $task->no_of_images }}</td>
-                            <td class="border px-4 py-2">{{ $task->detail }}</td>
+                        <tr class="cursor-pointer">
+                            <td wire:click="in_progress({{ $task->id }})" class="border px-4 py-2">{{ $task->title }}</td>
+                            <td wire:click="in_progress({{ $task->id }})" class="border px-4 py-2">{{ $task->no_of_images }}</td>
+                            <td wire:click="in_progress({{ $task->id }})" class="border px-4 py-2">{{ $task->detail }}</td>
                             <td class="border px-4 py-2">
                                 <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">In Progress</button>
                             </td>
