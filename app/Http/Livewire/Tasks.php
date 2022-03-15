@@ -37,11 +37,7 @@ class Tasks extends Component
         $this->openModal();
     }
   
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    
     public function openModal()
     {
         $this->isOpen = true;
@@ -57,11 +53,7 @@ class Tasks extends Component
         $this->isOpen = false;
     }
   
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    
     private function resetInputFields(){
         $this->title = '';
         $this->no_of_images = '';
@@ -69,11 +61,6 @@ class Tasks extends Component
         $this->task_id = '';
     }
      
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     public function store()
     {
         $this->validate();
@@ -90,11 +77,7 @@ class Tasks extends Component
         $this->closeModal();
         $this->resetInputFields();
     }
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    
     public function edit($id)
     {
         $task = Task::findOrFail($id);
@@ -106,11 +89,6 @@ class Tasks extends Component
         $this->openModal();
     }
      
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     public function delete($id)
     {
         Task::find($id)->delete();

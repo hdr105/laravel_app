@@ -4,18 +4,19 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Task;
+use App\Models\TaskImages;
 
-
+use Auth;
 class InProgress extends Component
 {
-
     public $in_progress_tasks;
-
-    public  $img ;
-
+    public $task;
+    public $img;
     public $images;
-
+    private $client;
     public $showImages = 0;
+    public $required_images = 0;
+    
 
     protected $rules = [
         'img' => 'required',
@@ -23,23 +24,35 @@ class InProgress extends Component
 
     public function mount($id)
     {
-        $this->in_progress_tasks = Task::where('id',$id)->get();
+        $this->task = Task::where('id',$id)->first();
+        $this->required_images = $this->task->no_of_images;
     }
+    
 
     public function render()
     {
         return view('livewire.in-progress');
     }
-
-    public function ImgSearch(){
-        dd($this->img);
-        $this->validate();
-        $client = new \Shutterstock\Api\Client("kOjjBu34Sl7YGpY1J1jZZCqHoCZ4IaVN","J8HynIy3JeR20nYC");
-        // perform an image search for puppies
-        $images = $client->get('images/search', array('query' => 'pool'));
-        $images = $images->getBody()->jsonSerialize()['data'];
-        $this->images = $images;
-        $showImages = 1;
+    public function submit_task($urls)
+    {
+        foreach ($urls as $key => $url) {
+            TaskImages::create([
+                'user_id'=>Auth::User()->id,
+                'task_id'=>Auth::User()->id,
+                'url' =>$url,
+            ]);
+        }
+        return $this->emit('alert', ['type' => 'success', 'message' => 'Task submited successfully']);
     }
 
+    public function search()
+    {
+        $client = new \Shutterstock\Api\Client("kOjjBu34Sl7YGpY1J1jZZCqHoCZ4IaVN","J8HynIy3JeR20nYC");
+        $images = $client->get('images/search', array('query' => $this->img));
+        $images = $images->getBody()->jsonSerialize()['data'];
+        $this->images = $images;
+        
+        $this->showImages = 1;
+        $this->img = '';
+    }
 }

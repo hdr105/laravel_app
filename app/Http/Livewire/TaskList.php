@@ -13,14 +13,13 @@ class TaskList extends Component
     public function render()
     {
 
-        $inprogress = Task::where('user_id',Auth::user()->id)->where('status',1)->get();
+        $inprogress = Task::where('user_id',Auth::user()->id)->where('status','1')->get();
         if(count($inprogress)){
-            $this->tasks = Task::where('user_id',Auth::user()->id)->where('status',1)->get();
-
+            $this->tasks = Task::where('user_id',Auth::user()->id)->where('status','1')->get();
         }else{
-
-            $this->tasks = Task::where('status',0)->whereNull('user_id')->get();
+            $this->tasks = Task::where('status','0')->whereNull('user_id')->get();
         }
+
         $this->mytasks = Task::where('user_id',Auth::user()->id)->get();
         return view('livewire.task-list');
     }
@@ -33,13 +32,7 @@ class TaskList extends Component
     }
 
     public function in_progress($id){
-        // dd($id);
-        // $this->in_progress_tasks = Task::where('id',$id)->get();
         return redirect('/in_progress/'.$id);
-        // dd($in_progress_tasks);
-        // Task::where('id',$id)->update([
-        //     'status' => 2,
-        // ]);
     }
 
 }
