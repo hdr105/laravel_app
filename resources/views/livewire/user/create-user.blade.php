@@ -27,6 +27,16 @@
                   <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="exampleFormControlInput3" wire:model="password" placeholder="Enter Password"></textarea>
                   @error('password') <span class="text-red-500">{{ $message }}</span>@enderror
               </div>
+              <div class="mb-4">
+                  <label for="exampleFormControlInput3" class="block text-gray-700 text-sm font-bold mb-2">Role:</label>
+                  <select wire:model="role" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value="" disabled="disabled">Select Role</option>
+                    <option value="admin">Admin</option>
+                    <option value="staff">Staff</option>
+                  </select>
+                  <!-- <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="exampleFormControlInput3" wire:model="role" placeholder="Select Role"></textarea> -->
+                  @error('role') <span class="text-red-500">{{ $message }}</span>@enderror
+              </div>
         </div>
       </div>
   

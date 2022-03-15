@@ -20,12 +20,13 @@ class Users extends Component
     protected $rules = [
         'name' => 'required',
         'email' => 'required|email',
+        'role' => 'required',
 
     ];
 
     public function render()
     {
-        $this->users = User::where('role' ,'!=', 'admin')->get();
+        $this->users = User::where('email' ,'!=', 'admin@gmail.com')->get();
         return view('livewire.users');
     }
 
@@ -42,9 +43,10 @@ class Users extends Component
         User::updateOrCreate(['id' => $this->user_id], [
             'name' => $this->name,
             'email' => $this->email,
-            'role' => 'staff',
+            'role' => $this->role,
             'password' => Hash::make($this->password)
         ]);
+
 
         session()->flash('message',
             $this->user_id? 'User Updated Successfully.' : 'User Created Successfully.');
