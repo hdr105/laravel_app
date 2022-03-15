@@ -7,6 +7,7 @@ use App\Http\Livewire\InProgress;
 use App\Http\Livewire\TaskList;
 use App\Http\Livewire\Users;
 use App\Http\Livewire\Detail;
+use App\Http\Livewire\Api;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +32,7 @@ Route::get('/task', Tasks::class)->middleware(['auth','role']);
 Route::get('/task-list', TaskList::class)->middleware(['auth']);
 Route::get('/task-detail/{id}', Detail::class)->middleware(['auth']);
 Route::get('/in_progress/{id}', InProgress::class)->middleware(['auth']);
+Route::get('/settings', Api::class)->middleware(['auth']);
 Route::get('/storyblok/{slug?}', Storyblock::class);
 
 

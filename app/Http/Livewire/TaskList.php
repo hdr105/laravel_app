@@ -38,6 +38,6 @@ class TaskList extends Component
             $this->tasks = Task::where('status','0')->whereNull('user_id')->get();
         }
 
-        $this->mytasks = Task::where('user_id',Auth::user()->id)->get();
+        // $this->mytasks = Task::where('user_id',Auth::user()->id)->get();
     }
 }

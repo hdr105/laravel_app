@@ -18,10 +18,8 @@ class CreateTaskImagesTable extends Migration
             $table->string('url');
             $table->unsignedBigInteger('task_id')->nullable();
             $table->foreign('task_id')->references('id')->on('tasks');
-
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
-
             $table->timestamps();
         });
     }
