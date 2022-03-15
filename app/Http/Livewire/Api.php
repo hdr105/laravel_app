@@ -63,6 +63,11 @@ class Api extends Component
     public function store()
     {
         $this->validate();
+        if((int)$this->status === 1){
+            \App\Models\Api::where('status',1)->update([
+                'status' => 0
+            ]);
+        }
         \App\Models\Api::updateOrCreate(['id' => $this->api_id], [
             'name' => $this->name,
             'consumer_key' => $this->consumer_key,
@@ -83,7 +88,7 @@ class Api extends Component
         $this->name = $this->api->name;
         $this->consumer_key = $this->api->consumer_key;
         $this->consumer_secret = $this->api->consumer_secret;
-        $this->status = $this->status;
+        $this->status = $this->api->status;
         $this->isOpen = true;
     }
     public function delete($id)

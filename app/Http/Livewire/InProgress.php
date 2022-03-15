@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Task;
+use App\Models\Api;
 use App\Models\TaskImages;
 
 use Auth;
@@ -51,7 +52,8 @@ class InProgress extends Component
 
     public function search()
     {
-        $client = new \Shutterstock\Api\Client("kOjjBu34Sl7YGpY1J1jZZCqHoCZ4IaVN","J8HynIy3JeR20nYC");
+        $api = Api::where('status',1)->first();
+        $client = new \Shutterstock\Api\Client($api->consumer_key,$api->consumer_secret);
         $images = $client->get('images/search', array('query' => $this->img));
         $images = $images->getBody()->jsonSerialize()['data'];
         $this->images = $images;
