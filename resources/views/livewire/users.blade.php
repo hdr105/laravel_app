@@ -16,7 +16,7 @@
             @if($isOpen)
                 @include('livewire.user.create-user')
             @endif
-           
+
             <table class="table-fixed w-full">
                 <thead>
                     <tr class="bg-gray-100">

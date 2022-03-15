@@ -31,12 +31,12 @@
                 </thead>
                 <tbody>
                     @foreach($tasks as $task)
-                    <tr>
-                        
+                    <tr class="text-center">
                         <td class="border px-4 py-2">{{ $task->title }}</td>
                         <td class="border px-4 py-2">{{ $task->no_of_images }}</td>
                         <td class="border px-4 py-2">{{ $task->detail }}</td>
                         <td class="border px-4 py-2">
+                            <button wire:click="detail({{ $task->id }})" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Detail</button>
                             <button wire:click="edit({{ $task->id }})" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</button>
                             <button wire:click="delete({{ $task->id }})" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
                         </td>
