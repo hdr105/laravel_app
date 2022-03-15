@@ -17,27 +17,25 @@
                 </thead>
                 <tbody>
                     @foreach($tasks as $task)
-
-                    @if( $task->status === '0')
-                        <tr class="text-center" >
-                            <td class="border px-4 py-2">{{ $task->title }}</td>
-                            <td class="border px-4 py-2">{{ $task->no_of_images }}</td>
-                            <td class="border px-4 py-2">{{ $task->detail }}</td>
-                            <td class="border px-4 py-2">
-                                <button wire:click="starttask({{ $task->id }})" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Start Task</button>
-                            </td>
-                        </tr>
-
-                    @elseif( $task->status === '1')
-                        <tr class="cursor-pointer text-center" wire:click="in_progress({{ $task->id }})">
-                            <td class="border px-4 py-2">{{ $task->title }}</td>
-                            <td class="border px-4 py-2">{{ $task->no_of_images }}</td>
-                            <td class="border px-4 py-2">{{ $task->detail }}</td>
-                            <td class="border px-4 py-2">
-                                <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">In Progress</button>
-                            </td>
-                        </tr>
-                    @endif
+                        @if($task->status === '0')
+                            <tr class="text-center" >
+                                <td class="border px-4 py-2">{{ $task->title }}</td>
+                                <td class="border px-4 py-2">{{ $task->no_of_images }}</td>
+                                <td class="border px-4 py-2">{{ $task->detail }}</td>
+                                <td class="border px-4 py-2">
+                                    <button wire:click="starttask({{ $task->id }})" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Start Task</button>
+                                </td>
+                            </tr>
+                        @elseif($task->status === '1')
+                            <tr class="cursor-pointer text-center" wire:click="in_progress({{ $task->id }})">
+                                <td class="border px-4 py-2">{{ $task->title }}</td>
+                                <td class="border px-4 py-2">{{ $task->no_of_images }}</td>
+                                <td class="border px-4 py-2">{{ $task->detail }}</td>
+                                <td class="border px-4 py-2">
+                                    <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">In Progress</button>
+                                </td>
+                            </tr>
+                        @endif
                     @endforeach
 
                 </tbody>

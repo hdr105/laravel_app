@@ -28,7 +28,6 @@ class InProgress extends Component
         $this->required_images = $this->task->no_of_images;
     }
     
-
     public function render()
     {
         return view('livewire.in-progress');

@@ -31,7 +31,6 @@ Route::get('/task', Tasks::class)->middleware(['auth','role']);
 Route::get('/task-list', TaskList::class)->middleware(['auth']);
 Route::get('/task-detail/{id}', Detail::class)->middleware(['auth']);
 Route::get('/in_progress/{id}', InProgress::class)->middleware(['auth']);
-// Route::get('/storyblock', Storyblock::class)->middleware(['auth']);
 Route::get('/storyblok/{slug?}', Storyblock::class);
 
 
