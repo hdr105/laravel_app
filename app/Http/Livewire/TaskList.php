@@ -27,7 +27,7 @@ class TaskList extends Component
 
     public function in_progress($id){
         // dd($id);
-        
+
         return redirect('/in_progress/'.$id);
     }
     public function started(){
@@ -38,6 +38,6 @@ class TaskList extends Component
             $this->tasks = Task::where('status','0')->whereNull('user_id')->get();
         }
 
-        $this->mytasks = Task::where('user_id',Auth::user()->id)->get();
+        // $this->mytasks = Task::where('user_id',Auth::user()->id)->get();
     }
 }
