@@ -52,8 +52,12 @@
             if (param['type'] == "success"){
                 setTimeout(function () {
                     $(".modal").modal("hide");
+                    window.location.href = param['url'];
+                    
                 }, 300);
             }
+            
+            
         });
         
         $("body").on('click','.completed', function () {

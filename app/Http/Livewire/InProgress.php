@@ -42,10 +42,12 @@ class InProgress extends Component
                 'url' =>$url,
             ]);
         }
+        
         $this->task->update([
             'status' => '2'
         ]);
-        return $this->emit('alert', ['type' => 'success', 'message' => 'Task submited successfully']);
+        $url = env('APP_URL').'/task-list';
+        return $this->emit('alert', ['type' => 'success', 'message' => 'Task submited successfully','url' => $url]);
     }
 
     public function search()
