@@ -38,10 +38,13 @@ class InProgress extends Component
         foreach ($urls as $key => $url) {
             TaskImages::create([
                 'user_id'=>Auth::User()->id,
-                'task_id'=>Auth::User()->id,
+                'task_id'=>$this->task->id,
                 'url' =>$url,
             ]);
         }
+        $this->task->update([
+            'status' => '2'
+        ]);
         return $this->emit('alert', ['type' => 'success', 'message' => 'Task submited successfully']);
     }
 

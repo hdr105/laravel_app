@@ -19,7 +19,7 @@
                     @foreach($tasks as $task)
 
                     @if( $task->status === '0')
-                        <tr class="" >
+                        <tr class="text-center" >
                             <td class="border px-4 py-2">{{ $task->title }}</td>
                             <td class="border px-4 py-2">{{ $task->no_of_images }}</td>
                             <td class="border px-4 py-2">{{ $task->detail }}</td>
@@ -29,7 +29,7 @@
                         </tr>
 
                     @elseif( $task->status === '1')
-                        <tr class="cursor-pointer" wire:click="in_progress({{ $task->id }})">
+                        <tr class="cursor-pointer text-center" wire:click="in_progress({{ $task->id }})">
                             <td class="border px-4 py-2">{{ $task->title }}</td>
                             <td class="border px-4 py-2">{{ $task->no_of_images }}</td>
                             <td class="border px-4 py-2">{{ $task->detail }}</td>
