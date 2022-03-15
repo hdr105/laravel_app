@@ -17,6 +17,7 @@ class Detail extends Component
     public $assignee;
     public $assignee_name;
     public $no_of_images;
+    public $images;
 
     public function mount($id){
         $this->task = Task::find($id);
@@ -31,9 +32,8 @@ class Detail extends Component
         }else{
             $this->assignee_name = "Not Assigned";
         }
-        if($this->status === '3'){
-            $this->ImgUrl = TaskImages::where('user_id', $this->user_id && 'task_id', $this->task->id)->first('url');
-        }
+
+        $this->images = TaskImages::where('task_id',$this->task->id)->get('url');
 
     }
 

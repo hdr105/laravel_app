@@ -30,19 +30,14 @@
             </div>
         </div>
     </div>
-    @if($status === '2')
+    @if(count($images) > 0)
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg px-4 py-4">
-                    @foreach ($ImgUrl as $url)
-                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
-                            <img class="w-full" src="{{ $url }}" alt="Sunset in the mountains">
-                            <div class="px-6 py-4">
-                                <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
+                @foreach ($images as $url)
+                    <div class="mb-2 rounded overflow-hidden shadow-lg">
+                        <img class="h-1/3" src="{{ $url->url }}" alt="Oops! Wait image will load soon">
+                    </div>
+                @endforeach
             </div>
         </div>
     @endif
