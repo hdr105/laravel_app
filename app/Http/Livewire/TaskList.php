@@ -27,7 +27,7 @@ class TaskList extends Component
 
     public function in_progress($id){
         // dd($id);
-        
+
         return redirect('/in_progress/'.$id);
     }
     public function started(){

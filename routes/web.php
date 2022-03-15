@@ -20,7 +20,7 @@ use App\Http\Livewire\Api;
 */
 
 Route::get('/', function () {
-    return redirect('/task');
+    return redirect('/users');
 })->middleware(['auth','role']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

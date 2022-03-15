@@ -4,10 +4,11 @@
             Tasks Detail
         </h2>
     </x-slot>
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg px-4 py-4">
-                <table class="table-fixed w-full">
+                <table class="table w-full">
                     <thead>
                         <tr class="bg-gray-100">
                             <th class="px-4 py-2">Title</th>
@@ -26,6 +27,7 @@
                             <td class="border px-4 py-2">{{ $assignee_name }}</td>
                         </tr>
                     </tbody>
+                </table>
                 </div>
             </div>
         </div>
@@ -33,11 +35,13 @@
     @if(count($images) > 0)
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="flex flex-row container mx-auto space-y-2 lg:space-y-0 lg:gap-2 lg:grid lg:grid-cols-3">
                 @foreach ($images as $url)
-                    <div class="mb-2 rounded overflow-hidden shadow-lg">
-                        <img class="h-1/3" src="{{ $url->url }}" alt="Oops! Wait image will load soon">
+                    <div class=" rounded overflow-hidden shadow-lg">
+                        <img class="h-1/3" style="width:100%;max-height:280px;height:100%;min-height:280px;" src="{{ $url->url }}" alt="Oops! Wait image will load soon">
                     </div>
                 @endforeach
+            </div>
             </div>
         </div>
     @endif
