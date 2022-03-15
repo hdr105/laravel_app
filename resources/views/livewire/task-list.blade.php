@@ -17,11 +17,9 @@
                 </thead>
                 <tbody>
                     @foreach($tasks as $task)
-<<<<<<< HEAD
-                    @if( $task->status === 0)
-=======
+
                     @if( $task->status === '0')
->>>>>>> 3e07b9e7abcfbd7db86cc601d071c0acd5011597
+
                         <tr class="cursor-pointer" >
                             <td class="border px-4 py-2">{{ $task->title }}</td>
                             <td class="border px-4 py-2">{{ $task->no_of_images }}</td>
@@ -30,19 +28,12 @@
                                 <button wire:click="starttask({{ $task->id }})" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Start Task</button>
                             </td>
                         </tr>
-<<<<<<< HEAD
-                    @elseif( $task->status ===  1)
-                        <tr class="cursor-pointer">
-                            <td wire:click="in_progress({{ $task->id }})" class="border px-4 py-2">{{ $task->title }}</td>
-                            <td wire:click="in_progress({{ $task->id }})" class="border px-4 py-2">{{ $task->no_of_images }}</td>
-                            <td wire:click="in_progress({{ $task->id }})" class="border px-4 py-2">{{ $task->detail }}</td>
-=======
+
                     @elseif( $task->status === '1')
                         <tr class="cursor-pointer" wire:click="in_progress({{ $task->id }})">
                             <td class="border px-4 py-2">{{ $task->title }}</td>
                             <td class="border px-4 py-2">{{ $task->no_of_images }}</td>
                             <td class="border px-4 py-2">{{ $task->detail }}</td>
->>>>>>> 3e07b9e7abcfbd7db86cc601d071c0acd5011597
                             <td class="border px-4 py-2">
                                 <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">In Progress</button>
                             </td>
