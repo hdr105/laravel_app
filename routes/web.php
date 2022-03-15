@@ -18,7 +18,7 @@ use App\Http\Livewire\Users;
 */
 
 Route::get('/', function () {
-    return redirect('/dashboard');
+    return redirect('/task');
 })->middleware(['auth','role']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

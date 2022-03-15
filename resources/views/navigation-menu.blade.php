@@ -10,12 +10,31 @@
                     </a>
                 </div>
 
-                <!-- Navigation Links -->
+                {{-- <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-jet-nav-link :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
-                </div>
+                </div> --}}
+                @if(Auth::User()->role == "admin")
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-jet-nav-link href="{{ Url('users') }}" >
+                            Users
+                        </x-jet-nav-link>
+                    </div>
+
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-jet-nav-link href="{{ Url('task') }}" >
+                            Tasks
+                        </x-jet-nav-link>
+                    </div>
+                @else
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-jet-nav-link href="{{ Url('task-list')}}" >
+                            Task List
+                        </x-jet-nav-link>
+                    </div>
+                @endif
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
