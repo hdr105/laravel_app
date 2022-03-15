@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 use App\Models\Task;
+use App\Models\TaskImages;
 use App\Models\User;
 use Livewire\Component;
 
@@ -29,6 +30,9 @@ class Detail extends Component
             $this->assignee_name = $this->assignee->name;
         }else{
             $this->assignee_name = "Not Assigned";
+        }
+        if($this->status === '3'){
+            $this->ImgUrl = TaskImages::where('user_id', $this->user_id && 'task_id', $this->task->id)->first('url');
         }
 
     }
